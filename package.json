@@ -1,0 +1,24 @@
+{
+  "name": "trello-mcp-server",
+  "version": "1.0.0",
+  "description": "MCP server for Trello integration with Claude Code",
+  "type": "module",
+  "main": "build/index.js",
+  "scripts": {
+    "build": "tsc && node -e \"require('fs').chmodSync('build/index.js', '755')\"",
+    "dev": "tsc --watch",
+    "start": "node build/index.js"
+  },
+  "keywords": ["mcp", "trello", "claude-code", "task-management"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "latest",
+    "node-fetch": "^3.3.2",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "typescript": "^5.3.0"
+  }
+}

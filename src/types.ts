@@ -14,6 +14,15 @@ export interface TrelloList {
   idBoard: string;
 }
 
+export interface TrelloBadges {
+  checkItems: number;
+  checkItemsChecked: number;
+  comments: number;
+  attachments: number;
+  description: boolean;
+  due: string | null;
+}
+
 export interface TrelloCard {
   id: string;
   name: string;
@@ -25,6 +34,44 @@ export interface TrelloCard {
   due: string | null;
   labels: TrelloLabel[];
   url: string;
+  badges?: TrelloBadges;
+  checklists?: TrelloChecklist[];
+  actions?: TrelloComment[];
+}
+
+export interface TrelloCheckItem {
+  id: string;
+  name: string;
+  state: 'complete' | 'incomplete';
+  pos: number;
+  idChecklist?: string;
+}
+
+export interface TrelloChecklist {
+  id: string;
+  name: string;
+  idCard: string;
+  pos: number;
+  checkItems: TrelloCheckItem[];
+}
+
+export interface TrelloCommentData {
+  text: string;
+  card: { id: string; name: string };
+}
+
+export interface TrelloCommentAuthor {
+  id: string;
+  fullName: string;
+  username: string;
+}
+
+export interface TrelloComment {
+  id: string;
+  type: 'commentCard';
+  date: string;
+  data: TrelloCommentData;
+  memberCreator: TrelloCommentAuthor;
 }
 
 export interface TrelloLabel {
